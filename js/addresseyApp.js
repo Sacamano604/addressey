@@ -1,7 +1,8 @@
 'use strict';
 // Addressey's App Module
 var addresseyApp = angular.module('addresseyApp',[
-  'ngRoute'
+  'ngRoute',
+  'addresseyControllers'
 ]);
 // Addressey's route provider
 addresseyApp.config(['$routeProvider',

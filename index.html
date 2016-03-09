@@ -31,11 +31,11 @@
           </button>
           <a class="navbar-brand" href="#">Addressey</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse" ng-controller="navController">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#welcome">Home</a></li>
-            <li><a href="#/login">Login</a></li>
-            <li><a href="#/register">Register</a></li>
+            <li ng-class="{ active: isActive('/welcome') }"><a href="#/welcome">Home</a></li>
+            <li ng-class="{ active: isActive('/login') }"><a href="#/login">Login</a></li>
+            <li ng-class="{ active: isActive('/register') }"><a href="#/register">Register</a></li>
           </ul>
         </div>
       </div>
@@ -56,5 +56,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.min.js"></script>
     <script src="js/addresseyApp.js"></script>
+    <script src="js/addresseyControllers.js"></script>
   </body>
 </html>

@@ -4,15 +4,15 @@ body {
 form {
   padding: 10px;
 }
-.login {
+.login, .register {
   padding: 40px 15px;
   text-align: center;
 }
 .panel-info {
   border-color: #adadad;
 }
-#loginPanel {
-  max-width: 500px;
+#loginPanel, #registerPanel {
+  max-width: 600px;
   margin: 0 auto;
 }
 #navbar {
