@@ -3,7 +3,8 @@
 var addresseyApp = angular.module('addresseyApp',[
   'ngRoute',
   'firebase',
-  'addresseyControllers'
+  'addresseyControllers',
+  'addresseyServices'
 ]);
 // Addressey's route provider
 addresseyApp.config(['$routeProvider',
@@ -16,8 +17,8 @@ addresseyApp.config(['$routeProvider',
         templateUrl: 'addressey/login.html'
       }).
       when('/register', {
-        templateUrl: 'addressey/register.html'
-        controller: 'AuthController'
+        templateUrl: 'addressey/register.html',
+        controller: 'authController'
       }).
       when('/book', {
         templateUrl: 'addressey/book.html'

@@ -4,9 +4,9 @@
 var addresseyControllers = angular.module('addresseyControllers', []);
 
 // AuthController - Used for registering/logging in/logging out
-addresseyControllers.controller('AuthController', ['$scope', 'authService', function($scope, authService) {
+addresseyControllers.controller('authController', ['$scope', 'authService', function($scope, authService) {
   // Object bound to inputs on the register and login pages
-  $scope.user = {name: '', email: '', password: ''};
+  $scope.user = {email: '', password: ''};
   // Method to register a new user using the authService
   $scope.register = function() {
     authService.register($scope.user);
