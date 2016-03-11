@@ -20,7 +20,7 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav ng-controller="authController" class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -29,13 +29,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Addressey</a>
+          <a class="navbar-brand" href="#/welcome">Addressey</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse" ng-controller="navController">
           <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActive('/welcome') }"><a href="#/welcome">Home</a></li>
-            <li ng-class="{ active: isActive('/login') }"><a href="#/login">Login</a></li>
-            <li ng-class="{ active: isActive('/register') }"><a href="#/register">Register</a></li>
+            <li ng-class="{ active: isActive('/login') }" ng-hide="currentUser"><a href="#/login">Login</a></li>
+            <li ng-class="{ active: isActive('/register') }" ng-hide="currentUser"><a href="#/register">Register</a></li>
+            <li id="loggedIn" ng-show="currentUser">Logged in as: {{ loggedInUser }}</li>
+            <li ng-show="currentUser"><a href="" ng-click="logout()">Logout</a></li>
           </ul>
         </div>
       </div>

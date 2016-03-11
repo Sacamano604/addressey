@@ -22,7 +22,8 @@ addresseyApp.config(['$routeProvider',
         controller: 'authController'
       }).
       when('/book', {
-        templateUrl: 'addressey/book.html'
+        templateUrl: 'addressey/book.html',
+        controller: 'bookController'
       }).
       otherwise({
         redirectTo: '/welcome'

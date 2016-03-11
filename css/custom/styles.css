@@ -11,6 +11,10 @@ form {
 .panel-info {
   border-color: #adadad;
 }
+#loggedIn {
+  margin-top: 15px;
+  color: #9d9d9d;
+}
 #regAlert {
   margin: 20px;
 }

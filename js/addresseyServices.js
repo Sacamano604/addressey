@@ -11,7 +11,9 @@ angular.module('addresseyServices', [])
   // Authentication Service
   .factory('authService', function($firebaseObject, $location, FIREBASE_URL, $rootScope, dataService) {
     var authRef = new Firebase(FIREBASE_URL);
+
     var authServiceObject = {
+      // Register Function
       register: function(user) {
         authRef.createUser({email: user.email, password: user.password}, function(error, userData) {
           if (error) {
@@ -24,27 +26,36 @@ angular.module('addresseyServices', [])
           }
         });
       },
+      // Login Function
       login: function(user) {
         authRef.authWithPassword({email: user.email, password: user.password}, function(error, authData) {
           if (error) {
             // Need to display an error to the user, instead of console logging it.
             console.log("Login Failed!", error);
           } else {
-            console.log("Authenticated successfully with payload:", authData);
+            $rootScope.currentUser = true;
+            console.log("Authenticated successfully with payload:", authData.uid);
             // If the user was created successfully then show them the address book.
-            $location.path('/book').replace();
+            $location.path('/book');
             $rootScope.$apply();
           }
         });
+      },
+      // Logout Function
+      logout: function() {
+        authRef.unauth();
+        $rootScope.currentUser = null;
+        $location.path('/');
+      },
+      // Getting current user
+      getCurrentUser: function() {
+        var userData =  authRef.getAuth();
+        $rootScope.loggedInUser = userData.password.email;
+        // return userData.password.email;
       }
+    };
 
 
-
-
-
-
-
-    }
     return authServiceObject;
 
   })
