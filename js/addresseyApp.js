@@ -14,7 +14,8 @@ addresseyApp.config(['$routeProvider',
         templateUrl: 'addressey/welcome.html'
       }).
       when('/login', {
-        templateUrl: 'addressey/login.html'
+        templateUrl: 'addressey/login.html',
+        controller: 'authController'
       }).
       when('/register', {
         templateUrl: 'addressey/register.html',

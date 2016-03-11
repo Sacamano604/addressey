@@ -11,19 +11,37 @@ angular.module('addresseyServices', [])
   // Authentication Service
   .factory('authService', function($firebaseObject, $location, FIREBASE_URL, $rootScope, dataService) {
     var authRef = new Firebase(FIREBASE_URL);
-    // var auth = $firebaseObject(authRef);
-
     var authServiceObject = {
       register: function(user) {
         authRef.createUser({email: user.email, password: user.password}, function(error, userData) {
           if (error) {
+            // Need to display an error to the user, instead of console logging it.
             console.log("Error creating user:", error);
           } else {
             console.log("Successfully created user account with uid:", userData.uid);
-            // After successful creation we'll need to auto-call the login method
+            // If the user's account is created Successfully, pass that data over to the login method to auto-log them in.
+            authServiceObject.login({email: user.email, password: user.password});
           }
         });
-      } // comma before next one
+      },
+      login: function(user) {
+        authRef.authWithPassword({email: user.email, password: user.password}, function(error, authData) {
+          if (error) {
+            // Need to display an error to the user, instead of console logging it.
+            console.log("Login Failed!", error);
+          } else {
+            console.log("Authenticated successfully with payload:", authData);
+            // If the user was created successfully then show them the address book.
+            $location.path('/book').replace();
+            $rootScope.$apply();
+          }
+        });
+      }
+
+
+
+
+
 
 
     }

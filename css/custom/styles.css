@@ -11,6 +11,9 @@ form {
 .panel-info {
   border-color: #adadad;
 }
+#regAlert {
+  margin: 20px;
+}
 #loginPanel, #registerPanel {
   max-width: 600px;
   margin: 0 auto;
