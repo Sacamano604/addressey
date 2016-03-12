@@ -3,11 +3,7 @@
     <button id="contactButton" type="submit" class="btn btn-primary" ng-click="isAddingContact = !isAddingContact">Add a Contact</button>
     <h4>Current Contacts</h4>
     <ul id="contactsList">
-      <a href=""><li>Armin Toussi</li></a>
-      <a href=""><li>Ben Toussi</li></a>
-      <a href=""><li>Craig Johnson</li></a>
-      <a href=""><li>Frank Reynolds</li></a>
-      <a href=""><li>Steve Smith</li></a>
+      <li ng-repeat="contact in contacts | orderBy:'lastName' ">{{ contact.firstName }} {{ contact.lastName }}</li>
     </ul>
   </div>
   <div class="col-xs-12 col-md-8">

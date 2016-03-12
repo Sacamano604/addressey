@@ -15,18 +15,19 @@ angular.module('addresseyServices', [])
     }
   ])
   // Contacts Service
-  .factory('contactService', function(dataService, $firebaseObject) {
+  .factory('contactService', function(dataService, $firebaseArray, $q) {
     var ref = new Firebase('https://addressey.firebaseio.com/');
     var contactServiceObject = {
       saveContact: function(contact, userId) {
         var contacts = ref.child('contacts');
         contacts.child(userId).child('usersContacts').push(contact);
+      },
+      getContacts: function(userId) {
+        return $firebaseArray(ref.child('contacts').child(userId).child('usersContacts'));
       }
     }
     return contactServiceObject;
   })
-
-
 
 
   // Authentication Service
@@ -71,7 +72,7 @@ angular.module('addresseyServices', [])
       getCurrentUser: function() {
         var userData =  authRef.getAuth();
         $rootScope.loggedInUser = userData;
-        // return userData.password.email;
+        return userData.uid;
       }
     };
     return authServiceObject;
