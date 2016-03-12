@@ -1,11 +1,82 @@
 <div class="row">
-  <div class="col-xs-6 col-md-4">
-    <h3>Contacts</h3>
+  <div id="contactsSidebar" class="col-xs-3 col-md-3">
+    <button id="contactButton" type="submit" class="btn btn-primary" ng-click="isAddingContact = !isAddingContact">Add a Contact</button>
+    <h4>Current Contacts</h4>
+    <ul id="contactsList">
+      <a href=""><li>Armin Toussi</li></a>
+      <a href=""><li>Ben Toussi</li></a>
+      <a href=""><li>Craig Johnson</li></a>
+      <a href=""><li>Frank Reynolds</li></a>
+      <a href=""><li>Steve Smith</li></a>
+    </ul>
   </div>
   <div class="col-xs-12 col-md-8">
-    <h3>Addressey</h3>
+    <div ng-show="isAddingContact">
+      <h2>Add a Contact</h2>
+      <form class="form-inline">
+        <table id="addContactTable">
+          <tr>
+            <td>
+              <label for="firstName">First Name</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="firstName" placeholder="First Name">
+            </td>
+            <td>
+              <label for="lastName">Last Name</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="emailAddress">Email Address</label>
+            </td>
+            <td>
+              <input type="email" class="form-control" id="emailAddress" placeholder="Email Address">
+            </td>
+            <td>
+              <label for="phoneNumber">Phone Number</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="streetAddress">Street Address</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="streetAddress" placeholder="Street Address">
+            </td>
+            <td>
+              <label for="city">City</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="city" placeholder="City">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="country">Country</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="country" placeholder="Country">
+            </td>
+            <td>
+              <label for="zipPostal">ZIP/Postal Code</label>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="zipPostal" placeholder="ZIP/Postal Code">
+            </td>
+          </tr>
+        </table>
+        <div id="addContactButtons">
+          <button type="submit" class="btn btn-success">Add Contact</button>
+          <button type="reset" class="btn btn-danger">Reset Form</button>
+        </div>
+      </form>
+    </div>
   </div>
-
-
-
 </div>

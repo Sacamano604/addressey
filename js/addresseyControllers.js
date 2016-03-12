@@ -4,8 +4,19 @@
 var addresseyControllers = angular.module('addresseyControllers', []);
 
 
-addresseyControllers.controller('bookController', ['$scope', 'authService', function($scope, authService) {
+
+addresseyControllers.controller('bookController', ['$scope', '$location', 'currentAuth', 'authService', function($scope, $location, currentAuth, authService) {
   authService.getCurrentUser();
+  //
+  // $scope.newContact = {firstName: '', lastName: '', emailAddress: '', phoneNumber: '', streetAddress: '', city: '', country: '', zipPostal: ''};
+  //
+  // $scope.saveContact = function() {
+  //   contactService.saveContact($scope.newContact, $scope.currentUser.id);
+  //   $scope.newContact = {firstName: '', lastName: '', emailAddress: '', phoneNumber: '', streetAddress: '', city: '', country: '', zipPostal: ''};
+  // };
+
+
+
 }]);
 
 

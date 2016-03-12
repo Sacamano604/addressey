@@ -8,6 +8,12 @@ angular.module('addresseyServices', [])
     var fireData = $firebaseObject(dataRef);
     return fireData;
   })
+  // Service for firebaseAuth
+  .factory("Auth", ["$firebaseAuth", function($firebaseAuth) {
+      var ref = new Firebase('https://addressey.firebaseio.com/');
+      return $firebaseAuth(ref);
+    }
+  ])
   // Authentication Service
   .factory('authService', function($firebaseObject, $location, FIREBASE_URL, $rootScope, dataService) {
     var authRef = new Firebase(FIREBASE_URL);
@@ -50,7 +56,7 @@ angular.module('addresseyServices', [])
       // Getting current user
       getCurrentUser: function() {
         var userData =  authRef.getAuth();
-        $rootScope.loggedInUser = userData.password.email;
+        $rootScope.loggedInUser = userData;
         // return userData.password.email;
       }
     };

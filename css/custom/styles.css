@@ -25,3 +25,40 @@ form {
 #navbar {
   float: right;
 }
+#contactsSidebar {
+  text-align: center;
+}
+#contactButton {
+  margin-top: 20px;
+}
+#contactsList {
+  padding: 0;
+  list-style-type: none;
+}
+#contactsList li, #contactsList a li  {
+  color: #adadad;
+  margin: 5px;
+  padding: 10px;
+  background-color: #eee;
+  text-decoration: none;
+}
+#contactsList a li:hover {
+  color: black;
+  background-color: #adadad;
+  text-decoration: none;
+}
+#contactsList a:hover {
+  text-decoration: none;
+}
+#addContactTable {
+  /*width: 700px;*/
+}
+#addContactTable td {
+  padding: 5px;
+  width: 175px;
+  text-align: right;
+}
+#addContactButtons {
+  padding-top: 20px;
+  float: left;
+}

@@ -35,7 +35,7 @@
           <ul class="nav navbar-nav">
             <li ng-class="{ active: isActive('/login') }" ng-hide="currentUser"><a href="#/login">Login</a></li>
             <li ng-class="{ active: isActive('/register') }" ng-hide="currentUser"><a href="#/register">Register</a></li>
-            <li id="loggedIn" ng-show="currentUser">Logged in as: {{ loggedInUser }}</li>
+            <li id="loggedIn" ng-show="currentUser">Logged in as: {{ loggedInUser.password.email }}</li>
             <li ng-show="currentUser"><a href="" ng-click="logout()">Logout</a></li>
           </ul>
         </div>
