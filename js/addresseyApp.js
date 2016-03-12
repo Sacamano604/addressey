@@ -10,7 +10,6 @@ var addresseyApp = angular.module('addresseyApp',[
 addresseyApp.run(["$rootScope", "$location", function($rootScope, $location) {
   $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
     if (error === "AUTH_REQUIRED") {
-      console.log('Fuck you get out of here');
       $location.path("/login");
     }
   });

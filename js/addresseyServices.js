@@ -15,7 +15,7 @@ angular.module('addresseyServices', [])
     }
   ])
   // Contacts Service
-  .factory('contactService', function(dataService, $firebaseObject, FIREBASE_URL) {
+  .factory('contactService', function(dataService, $firebaseObject) {
     var ref = new Firebase('https://addressey.firebaseio.com/');
     var contactServiceObject = {
       saveContact: function(contact, userId) {
@@ -23,16 +23,6 @@ angular.module('addresseyServices', [])
         contacts.child(userId).child('usersContacts').push(contact);
       }
     }
-
-  //   var contacts = dataService.child('contacts');
-  //   var contactServiceObject = {
-  //     saveContact: function(contact, userId) {
-  //       contacts.$child(userId).$child('contacts').$add(contact);
-  //     },
-  //     getContactsByUserId: function(userId) {
-  //       return users.$child(userId).$child('contacts');
-  //     }
-  //   };
     return contactServiceObject;
   })
 

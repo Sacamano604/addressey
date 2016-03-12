@@ -12,8 +12,9 @@ addresseyControllers.controller('bookController', ['$scope', '$rootScope', '$loc
   $scope.newContact = {firstName: '', lastName: '', emailAddress: '', phoneNumber: '', streetAddress: '', city: '', country: '', zipPostal: ''};
 
   $scope.saveContact = function() {
-    contactService.saveContact($scope.newContact, $rootScope.loggedInUser.uid);
     $scope.newContact = {firstName: $scope.contact.firstName, lastName: $scope.contact.lastName, emailAddress: $scope.contact.emailAddress, phoneNumber: $scope.contact.phoneNumber, streetAddress: $scope.contact.streetAddress, city: $scope.contact.city, country: $scope.contact.country, zipPostal: $scope.contact.zipPostal};
+    contactService.saveContact($scope.newContact, $rootScope.loggedInUser.uid);
+    
   };
 }]);
 
