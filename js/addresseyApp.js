@@ -6,18 +6,15 @@ var addresseyApp = angular.module('addresseyApp',[
   'addresseyControllers',
   'addresseyServices'
 ]);
-
+//Checking for a logged in user and if not, redirect to the login page
 addresseyApp.run(["$rootScope", "$location", function($rootScope, $location) {
-$rootScope.$on("$routeChangeError", function(event, next, previous, error) {
-  // We can catch the error thrown when the $requireAuth promise is rejected
-  // and redirect the user back to the home page
-  if (error === "AUTH_REQUIRED") {
-    $location.path("/login");
-  }
-});
+  $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+    if (error === "AUTH_REQUIRED") {
+      console.log('Fuck you get out of here');
+      $location.path("/login");
+    }
+  });
 }]);
-
-
 // Addressey's route provider
 addresseyApp.config(['$routeProvider',
   function($routeProvider) {

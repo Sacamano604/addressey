@@ -13,20 +13,20 @@
   <div class="col-xs-12 col-md-8">
     <div ng-show="isAddingContact">
       <h2>Add a Contact</h2>
-      <form class="form-inline">
+      <form class="form-inline" ng-submit="saveContact()">
         <table id="addContactTable">
           <tr>
             <td>
               <label for="firstName">First Name</label>
             </td>
             <td>
-              <input type="text" class="form-control" id="firstName" placeholder="First Name">
+              <input ng-model="contact.firstName" type="text" class="form-control" id="firstName" placeholder="First Name">
             </td>
             <td>
               <label for="lastName">Last Name</label>
             </td>
             <td>
-              <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+              <input ng-model="contact.lastName" type="text" class="form-control" id="lastName" placeholder="Last Name">
             </td>
           </tr>
           <tr>
@@ -34,13 +34,13 @@
               <label for="emailAddress">Email Address</label>
             </td>
             <td>
-              <input type="email" class="form-control" id="emailAddress" placeholder="Email Address">
+              <input ng-model="contact.emailAddress" type="email" class="form-control" id="emailAddress" placeholder="Email Address">
             </td>
             <td>
               <label for="phoneNumber">Phone Number</label>
             </td>
             <td>
-              <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
+              <input ng-model="contact.phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Phone Number">
             </td>
           </tr>
           <tr>
@@ -48,13 +48,13 @@
               <label for="streetAddress">Street Address</label>
             </td>
             <td>
-              <input type="text" class="form-control" id="streetAddress" placeholder="Street Address">
+              <input ng-model="contact.streetAddress" type="text" class="form-control" id="streetAddress" placeholder="Street Address">
             </td>
             <td>
               <label for="city">City</label>
             </td>
             <td>
-              <input type="text" class="form-control" id="city" placeholder="City">
+              <input ng-model="contact.city" type="text" class="form-control" id="city" placeholder="City">
             </td>
           </tr>
           <tr>
@@ -62,13 +62,13 @@
               <label for="country">Country</label>
             </td>
             <td>
-              <input type="text" class="form-control" id="country" placeholder="Country">
+              <input ng-model="contact.country" type="text" class="form-control" id="country" placeholder="Country">
             </td>
             <td>
               <label for="zipPostal">ZIP/Postal Code</label>
             </td>
             <td>
-              <input type="text" class="form-control" id="zipPostal" placeholder="ZIP/Postal Code">
+              <input ng-model="contact.zipPostal" type="text" class="form-control" id="zipPostal" placeholder="ZIP/Postal Code">
             </td>
           </tr>
         </table>

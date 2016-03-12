@@ -14,10 +14,34 @@ angular.module('addresseyServices', [])
       return $firebaseAuth(ref);
     }
   ])
+  // Contacts Service
+  .factory('contactService', function(dataService, $firebaseObject, FIREBASE_URL) {
+    var ref = new Firebase('https://addressey.firebaseio.com/');
+    var contactServiceObject = {
+      saveContact: function(contact, userId) {
+        var contacts = ref.child('contacts');
+        contacts.child(userId).child('usersContacts').push(contact);
+      }
+    }
+
+  //   var contacts = dataService.child('contacts');
+  //   var contactServiceObject = {
+  //     saveContact: function(contact, userId) {
+  //       contacts.$child(userId).$child('contacts').$add(contact);
+  //     },
+  //     getContactsByUserId: function(userId) {
+  //       return users.$child(userId).$child('contacts');
+  //     }
+  //   };
+    return contactServiceObject;
+  })
+
+
+
+
   // Authentication Service
   .factory('authService', function($firebaseObject, $location, FIREBASE_URL, $rootScope, dataService) {
     var authRef = new Firebase(FIREBASE_URL);
-
     var authServiceObject = {
       // Register Function
       register: function(user) {
@@ -60,8 +84,5 @@ angular.module('addresseyServices', [])
         // return userData.password.email;
       }
     };
-
-
     return authServiceObject;
-
-  })
+  });
