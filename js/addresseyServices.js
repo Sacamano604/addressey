@@ -52,7 +52,7 @@ angular.module('addresseyServices', [])
         authRef.createUser({email: user.email, password: user.password}, function(error, userData) {
           if (error) {
             // Need to display an error to the user, instead of console logging it.
-            console.log("Error creating user:", error);
+            $('#error').html(error);
           } else {
             // If the user's account is created Successfully, pass that data over to the login method to auto-log them in.
             authServiceObject.login({email: user.email, password: user.password});
@@ -64,7 +64,7 @@ angular.module('addresseyServices', [])
         authRef.authWithPassword({email: user.email, password: user.password}, function(error, authData) {
           if (error) {
             // Need to display an error to the user, instead of console logging it.
-            console.log("Login Failed!", error);
+            $('#error').html(error);
           } else {
             $rootScope.currentUser = true;
             // If the user was created successfully then show them the address book.
