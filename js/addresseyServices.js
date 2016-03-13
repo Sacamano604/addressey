@@ -84,6 +84,27 @@ angular.module('addresseyServices', [])
         var userData =  authRef.getAuth();
         $rootScope.loggedInUser = userData;
         return userData.uid;
+      },
+      // User requesting a reset password email
+      requestReset: function(userEmail) {
+        authRef.resetPassword({email: userEmail}, function(error) {
+          if (error === null) {
+            $location.path('/changePassword');
+            $rootScope.$apply();
+          } else {
+            $('#error').html(error);
+          }
+        });
+      },
+      // Using the token to change their password
+      changePassword: function(userEmail, oldPassword, newPassword) {
+        authRef.changePassword({email: userEmail, oldPassword: oldPassword, newPassword: newPassword}, function(error) {
+          if (error === null) {
+            $('#success').html('Password changed successfully, <a href="#/login">click here to login</a>');
+          } else {
+            $('#error').html(error);
+          }
+        });
       }
     };
     return authServiceObject;

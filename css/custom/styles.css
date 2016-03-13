@@ -4,7 +4,7 @@ body {
 form {
   padding: 10px;
 }
-.login, .register {
+.login, .register, .requestReset, .cangePassword {
   padding: 40px 15px;
   text-align: center;
 }
@@ -14,6 +14,9 @@ form {
 #error {
   color: red;
 }
+#success {
+  color: green;
+}
 #loggedIn {
   margin-top: 15px;
   color: #9d9d9d;
@@ -21,7 +24,7 @@ form {
 #regAlert {
   margin: 20px;
 }
-#loginPanel, #registerPanel {
+#loginPanel, #registerPanel, #requestResetPanel, #changePasswordPanel {
   max-width: 600px;
   margin: 0 auto;
 }

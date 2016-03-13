@@ -29,6 +29,14 @@ addresseyApp.config(['$routeProvider',
         templateUrl: 'addressey/register.html',
         controller: 'authController'
       }).
+      when('/requestReset', {
+        templateUrl: 'addressey/requestReset.html',
+        controller: 'authController'
+      }).
+      when('/changePassword', {
+        templateUrl: 'addressey/changePassword.html',
+        controller: 'authController'
+      }).
       when('/book', {
         templateUrl: 'addressey/book.html',
         controller: 'bookController',

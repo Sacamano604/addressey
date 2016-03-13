@@ -56,6 +56,7 @@ addresseyControllers.controller('bookController', ['$scope', '$rootScope', '$loc
 addresseyControllers.controller('authController', ['$scope', '$location', 'authService', function($scope, $location, authService) {
   // Object bound to inputs on the register and login pages
   $scope.user = {email: '', password: ''};
+
   // Method to register a new user through the authService
   $scope.register = function() {
     authService.register($scope.user);
@@ -67,6 +68,12 @@ addresseyControllers.controller('authController', ['$scope', '$location', 'authS
   // Method to log out the user
   $scope.logout = function() {
     authService.logout();
+  };
+  $scope.requestReset = function() {
+    authService.requestReset($scope.resetEmail);
+  };
+  $scope.changePassword = function() {
+    authService.changePassword($scope.changeEmail, $scope.oldPassword, $scope.newPassword);
   }
 }]);
 
