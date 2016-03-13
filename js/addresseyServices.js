@@ -2,19 +2,22 @@
 // Services
 angular.module('addresseyServices', [])
   .value('FIREBASE_URL', 'https://addressey.firebaseio.com/')
-  // Data Service
+
+  // *** DATA SERVICE ***
   .factory('dataService', function($firebaseObject, FIREBASE_URL) {
     var dataRef = new Firebase(FIREBASE_URL);
     var fireData = $firebaseObject(dataRef);
     return fireData;
   })
-  // Service for firebaseAuth
+
+  // *** AUTHENTICATION CONTROLLER ***
   .factory("Auth", ["$firebaseAuth", function($firebaseAuth) {
       var ref = new Firebase('https://addressey.firebaseio.com/');
       return $firebaseAuth(ref);
     }
   ])
-  // Contacts Service
+
+  // *** CONTACTS CONTROLLER ***
   .factory('contactService', function(dataService, $firebaseArray, $firebaseObject, $rootScope) {
     var ref = new Firebase('https://addressey.firebaseio.com/');
     var contactServiceObject = {
@@ -39,7 +42,8 @@ angular.module('addresseyServices', [])
     }
     return contactServiceObject;
   })
-  // Authentication Service
+
+  // *** AUTHENTICATION SERVICE ***
   .factory('authService', function($firebaseObject, $location, FIREBASE_URL, $rootScope, dataService) {
     var authRef = new Firebase(FIREBASE_URL);
     var authServiceObject = {
