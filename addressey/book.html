@@ -11,8 +11,8 @@
     <!-- Div to show the form to add a new contact -->
     <div ng-show="isAddingContact" id="newContactForm">
       <form class="form-inline" name="addContactForm" ng-submit="saveContact()">
-      <button type="reset" class="btn btn-default btn-sm" ng-click="isAddingContact = !isAddingContact" id="formRemove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-      <h3>Add a Contact</h3>
+      <button type="reset" class="btn btn-default btn-xs" ng-click="isAddingContact = !isAddingContact" id="formRemove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+      <h3><strong>Add a Contact</strong></h3>
         <table id="addContactTable">
           <tr>
             <td>
@@ -73,21 +73,90 @@
         </table>
         <!-- <div id="addContactButtons"> -->
           <button id="addButton" type="submit" class="btn btn-success" ng-click="isAddingContact = !isAddingContact">Add Contact</button>
-          <button id="addButton" type="reset" class="btn btn-warning">Reset Form</button>      
+          <button id="addButton" type="reset" class="btn btn-warning">Reset Form</button>
         <!-- </div> -->
       </form>
     </div>
+    <!-- Div to show the details of the contact -->
+    <div ng-show="isShowingDetails" id="contactDetailsDiv">
+      <h3><strong>{{ contactDetails.firstName }} {{ contactDetails.lastName }}</strong></h3>
+      <p><strong>Email Address:</strong> <a href="mailto:{{ contactDetails.emailAddress }}">{{ contactDetails.emailAddress }}</a></p>
+      <p><strong>Phone Number:</strong> {{ contactDetails.phoneNumber }}</p>
+      <p><strong>Address:</strong> {{ contactDetails.streetAddress }}, {{ contactDetails.city }}, {{ contactDetails.country }} {{ contactDetails.zipPostal }}</p>
+      <br />
+      <button class="btn btn-info btn-sm" ng-click="showEditPane()">Edit Contact</button>
+      <button class="btn btn-danger btn-sm" ng-click="confirmDelete = !confirmDelete">Delete Contact</button>
+      <button ng-show="confirmDelete" class="btn btn-danger btn-sm" ng-click="deleteContact(contactDetails.$id)">Yes, delete contact!</button>
+    </div>
 
-      <!-- Div to show the details of the contact -->
-      <div ng-show="isShowingDetails" id="contactDetailsDiv">
-        <h3><strong>{{ contactDetails.firstName }} {{ contactDetails.lastName }}</strong></h3>
-        <p><strong>Email Address:</strong> <a href="mailto:{{ contactDetails.emailAddress }}">{{ contactDetails.emailAddress }}</a></p>
-        <p><strong>Phone Number:</strong> {{ contactDetails.phoneNumber }}</p>
-        <p><strong>Address:</strong> {{ contactDetails.streetAddress }}, {{ contactDetails.city }}, {{ contactDetails.country }} {{ contactDetails.zipPostal }}</p>
-        <br />
-        <button class="btn btn-info btn-sm">Edit Contact</button>
-        <button class="btn btn-danger btn-sm" ng-click="confirmDelete = !confirmDelete">Delete Contact</button>
-        <button ng-show="confirmDelete" class="btn btn-danger btn-sm" ng-click="deleteContact(contactDetails.$id)">Yes, delete contact!</button>
-      </div>
+    <!-- Div to show the edit details, with the input fields pre-filled -->
+    <div ng-show="isShowingEdit" id="contactEditDiv">
+      <form class="form-inline" name="addContactForm" ng-submit="editContact(contactDetails.$id)">
+      <button type="reset" class="btn btn-default btn-xs" ng-click="isShowingEdit = !isShowingEdit" id="formRemove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+      <h3><strong>Edit Contact</strong></h3>
+        <table id="addContactTable">
+          <tr>
+            <td>
+              <label for="firstName">First Name</label>
+            </td>
+            <td>
+              <input ng-model="contactDetails.firstName" type="text" class="form-control" id="firstName">
+            </td>
+            <td>
+              <label for="lastName">Last Name</label>
+            </td>
+            <td>
+              <input ng-model="contactDetails.lastName" type="text" class="form-control" id="lastName">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="emailAddress">Email Address</label>
+            </td>
+            <td>
+              <input ng-model="contactDetails.emailAddress" type="email" class="form-control" id="emailAddress">
+            </td>
+            <td>
+              <label for="phoneNumber">Phone Number</label>
+            </td>
+            <td>
+              <input ng-model="contactDetails.phoneNumber" type="text" class="form-control" id="phoneNumber">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="streetAddress">Street Address</label>
+            </td>
+            <td>
+              <input ng-model="contactDetails.streetAddress" type="text" class="form-control" id="streetAddress">
+            </td>
+            <td>
+              <label for="city">City</label>
+            </td>
+            <td>
+              <input ng-model="contactDetails.city" type="text" class="form-control" id="city">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="country">Country</label>
+            </td>
+            <td>
+              <input ng-model="contactDetails.country" type="text" class="form-control" id="country">
+            </td>
+            <td>
+              <label for="zipPostal">ZIP/Postal Code</label>
+            </td>
+            <td>
+              <input ng-model="contactDetails.zipPostal" type="text" class="form-control" id="zipPostal">
+            </td>
+          </tr>
+        </table>
+        <!-- <div id="addContactButtons"> -->
+          <button id="addButton" type="submit" class="btn btn-success" ng-click="isShowingEdit = !isShowingEdit">Update Contact</button>
+        <!-- </div> -->
+      </form>
+
+    </div>
   </div>
 </div>

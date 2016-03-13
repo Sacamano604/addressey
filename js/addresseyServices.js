@@ -28,6 +28,10 @@ angular.module('addresseyServices', [])
       getContactDetails: function(user, contactId) {
         return $firebaseObject(ref.child('contacts').child(user).child('usersContacts').child(contactId));
       },
+      editContact: function(contact, userId, contactId) {
+        var updateRef = new Firebase('https://addressey.firebaseio.com/contacts/' + userId + '/usersContacts/' + contactId);
+        updateRef.update(contact);
+      },
       deleteContact: function(userId, contactId) {
         var deleteRef = new Firebase('https://addressey.firebaseio.com/contacts/' + userId + '/usersContacts/' + contactId);
         deleteRef.remove();

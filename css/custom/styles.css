@@ -54,7 +54,7 @@ form {
   margin: 20px 5px 10px 10px;
   float: right;
 }
-#contactDetailsDiv {
+#contactDetailsDiv, #contactEditDiv {
   min-width: 400px;
   padding: 20px;
   border: 1px solid #eee;

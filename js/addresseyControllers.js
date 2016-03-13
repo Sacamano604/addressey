@@ -22,7 +22,14 @@ addresseyControllers.controller('bookController', ['$scope', '$rootScope', '$loc
     // Toggling the visibility of certains dom elements when we're viewing details or adding a contact
     $scope.confirmDelete = false;
     $scope.isAddingContact = false;
+    $scope.isShowingEdit = false;
     $scope.isShowingDetails = true;
+  };
+  $scope.editContact = function(contactId) {
+    // Toggling visibility of edit div, removing the details div
+    $scope.editContact = {firstName: $scope.contactDetails.firstName, lastName: $scope.contactDetails.lastName, emailAddress: $scope.contactDetails.emailAddress, phoneNumber: $scope.contactDetails.phoneNumber, streetAddress: $scope.contactDetails.streetAddress, city: $scope.contactDetails.city, country: $scope.contactDetails.country, zipPostal: $scope.contactDetails.zipPostal};
+    var user = authService.getCurrentUser();
+    contactService.editContact($scope.editContact, user, contactId);
   };
   $scope.deleteContact = function(contactId) {
     var user = authService.getCurrentUser();
@@ -33,9 +40,14 @@ addresseyControllers.controller('bookController', ['$scope', '$rootScope', '$loc
   // When the user is adding a contact, hide the visibility of certain divs
   $scope.addingContact = function() {
     // Toggling the visibility of certains divs when we're viewing details or adding a contact
+    $scope.isShowingEdit = false;
     $scope.isShowingDetails = false;
     $scope.isAddingContact = true;
-  }
+  };
+  $scope.showEditPane = function() {
+    $scope.isShowingDetails = false;
+    $scope.isShowingEdit = true;
+  };
 }]);
 
 
