@@ -19,14 +19,39 @@ addresseyControllers.controller('bookController', ['$scope', '$rootScope', '$loc
   $scope.viewContactDetails = function(contactId) {
     var user = authService.getCurrentUser();
     $scope.contactDetails = contactService.getContactDetails(user, contactId);
+    // Toggling the visibility of certains dom elements when we're viewing details or adding a contact
+    $scope.confirmDelete = false;
     $scope.isAddingContact = false;
     $scope.isShowingDetails = true;
   };
+  $scope.deleteContact = function(contactId) {
+    var user = authService.getCurrentUser();
+    contactService.deleteContact(user, contactId);
+    $scope.confirmDelete = false;
+    $scope.isShowingDetails = false;
+  };
+  // When the user is adding a contact, hide the visibility of certain divs
   $scope.addingContact = function() {
+    // Toggling the visibility of certains divs when we're viewing details or adding a contact
     $scope.isShowingDetails = false;
     $scope.isAddingContact = true;
   }
 }]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // AuthController - Used for registering/logging in/logging out
 addresseyControllers.controller('authController', ['$scope', '$location', 'authService', function($scope, $location, authService) {
   // Object bound to inputs on the register and login pages

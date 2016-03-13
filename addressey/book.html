@@ -1,18 +1,18 @@
 <div class="row">
   <div id="contactsSidebar" class="col-xs-3 col-md-3">
-    <button id="contactButton" type="submit" class="btn btn-primary" ng-click="addingContact()">Add a Contact</button>
+    <button id="contactButton" type="submit" class="btn btn-success" ng-click="addingContact()">Add a New Contact</button>
     <h4>Current Contacts</h4>
     <input ng-model="contactFilter" type="text" class="form-control" placeholder="Filter contacts...">
-    <ul id="contactsList">
-      <li ng-repeat="contact in contacts | orderBy:'lastName' | filter:contactFilter"><a href="" ng-click="viewContactDetails(contact.$id);">{{ contact.firstName }} {{ contact.lastName }}</a></li>
-    </ul>
+    <div class="list-group" id="contactsList">
+      <a href="" ng-repeat="contact in contacts | orderBy:'lastName' | filter:contactFilter" class="list-group-item" ng-click="viewContactDetails(contact.$id);">{{ contact.firstName }} {{ contact.lastName }}</a>
+    </div>
   </div>
   <div class="col-xs-12 col-md-8">
     <!-- Div to show the form to add a new contact -->
     <div ng-show="isAddingContact" id="newContactForm">
       <form class="form-inline" name="addContactForm" ng-submit="saveContact()">
-      <button type="reset" class="btn btn-default" ng-click="isAddingContact = !isAddingContact" id="formRemove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-      <h2>Add a Contact</h2>
+      <button type="reset" class="btn btn-default btn-sm" ng-click="isAddingContact = !isAddingContact" id="formRemove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+      <h3>Add a Contact</h3>
         <table id="addContactTable">
           <tr>
             <td>
@@ -84,6 +84,10 @@
         <p><strong>Email Address:</strong> <a href="mailto:{{ contactDetails.emailAddress }}">{{ contactDetails.emailAddress }}</a></p>
         <p><strong>Phone Number:</strong> {{ contactDetails.phoneNumber }}</p>
         <p><strong>Address:</strong> {{ contactDetails.streetAddress }}, {{ contactDetails.city }}, {{ contactDetails.country }} {{ contactDetails.zipPostal }}</p>
+        <br />
+        <button class="btn btn-info btn-sm">Edit Contact</button>
+        <button class="btn btn-danger btn-sm" ng-click="confirmDelete = !confirmDelete">Delete Contact</button>
+        <button ng-show="confirmDelete" class="btn btn-danger btn-sm" ng-click="deleteContact(contactDetails.$id)">Yes, delete contact!</button>
       </div>
   </div>
 </div>

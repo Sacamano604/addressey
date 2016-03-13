@@ -27,12 +27,14 @@ angular.module('addresseyServices', [])
       },
       getContactDetails: function(user, contactId) {
         return $firebaseObject(ref.child('contacts').child(user).child('usersContacts').child(contactId));
+      },
+      deleteContact: function(userId, contactId) {
+        var deleteRef = new Firebase('https://addressey.firebaseio.com/contacts/' + userId + '/usersContacts/' + contactId);
+        deleteRef.remove();
       }
     }
     return contactServiceObject;
   })
-
-
   // Authentication Service
   .factory('authService', function($firebaseObject, $location, FIREBASE_URL, $rootScope, dataService) {
     var authRef = new Firebase(FIREBASE_URL);
