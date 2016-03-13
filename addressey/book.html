@@ -91,7 +91,7 @@
 
     <!-- Div to show the edit details, with the input fields pre-filled -->
     <div ng-show="isShowingEdit" id="contactEditDiv">
-      <form class="form-inline" name="addContactForm" ng-submit="editContact(contactDetails.$id)">
+      <form id="editForm" class="form-inline" name="addContactForm" ng-submit="editContact(contactDetails.$id)">
       <button type="reset" class="btn btn-default btn-xs" ng-click="isShowingEdit = !isShowingEdit" id="formRemove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
       <h3><strong>Edit Contact</strong></h3>
         <table id="addContactTable">

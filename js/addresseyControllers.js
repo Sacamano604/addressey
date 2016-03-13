@@ -17,8 +17,7 @@ addresseyControllers.controller('bookController', ['$scope', '$rootScope', '$loc
   };
   // View the contact's details
   $scope.viewContactDetails = function(contactId) {
-    var user = authService.getCurrentUser();
-    $scope.contactDetails = contactService.getContactDetails(user, contactId);
+    $scope.contactDetails = contactService.getContactDetails($rootScope.loggedInUser.uid, contactId);
     // Toggling the visibility of certains dom elements when we're viewing details or adding a contact
     $scope.confirmDelete = false;
     $scope.isAddingContact = false;
@@ -27,13 +26,11 @@ addresseyControllers.controller('bookController', ['$scope', '$rootScope', '$loc
   };
   $scope.editContact = function(contactId) {
     // Toggling visibility of edit div, removing the details div
-    $scope.editContact = {firstName: $scope.contactDetails.firstName, lastName: $scope.contactDetails.lastName, emailAddress: $scope.contactDetails.emailAddress, phoneNumber: $scope.contactDetails.phoneNumber, streetAddress: $scope.contactDetails.streetAddress, city: $scope.contactDetails.city, country: $scope.contactDetails.country, zipPostal: $scope.contactDetails.zipPostal};
-    var user = authService.getCurrentUser();
-    contactService.editContact($scope.editContact, user, contactId);
+    $scope.editContactArray = {firstName: $scope.contactDetails.firstName, lastName: $scope.contactDetails.lastName, emailAddress: $scope.contactDetails.emailAddress, phoneNumber: $scope.contactDetails.phoneNumber, streetAddress: $scope.contactDetails.streetAddress, city: $scope.contactDetails.city, country: $scope.contactDetails.country, zipPostal: $scope.contactDetails.zipPostal};
+    contactService.editContact($scope.editContactArray, $rootScope.loggedInUser.uid, contactId);
   };
   $scope.deleteContact = function(contactId) {
-    var user = authService.getCurrentUser();
-    contactService.deleteContact(user, contactId);
+    contactService.deleteContact($rootScope.loggedInUser.uid, contactId);
     $scope.confirmDelete = false;
     $scope.isShowingDetails = false;
   };
