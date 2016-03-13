@@ -44,7 +44,6 @@ angular.module('addresseyServices', [])
             // Need to display an error to the user, instead of console logging it.
             console.log("Error creating user:", error);
           } else {
-            console.log("Successfully created user account with uid:", userData.uid);
             // If the user's account is created Successfully, pass that data over to the login method to auto-log them in.
             authServiceObject.login({email: user.email, password: user.password});
           }
@@ -58,7 +57,6 @@ angular.module('addresseyServices', [])
             console.log("Login Failed!", error);
           } else {
             $rootScope.currentUser = true;
-            console.log("Authenticated successfully with payload:", authData.uid);
             // If the user was created successfully then show them the address book.
             $location.path('/book');
             $rootScope.$apply();

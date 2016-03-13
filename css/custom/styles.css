@@ -37,6 +37,7 @@ form {
 #contactsList {
   padding: 0;
   list-style-type: none;
+  margin-bottom: 100px;
 }
 #contactsList li, #contactsList li a  {
   color: #adadad;
@@ -75,14 +76,28 @@ form {
   float: left;
 }
 #contactDetailsDiv {
-  padding: 10px;
+  padding: 20px;
   border: 1px solid #eee;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 50px;
+  padding-top: 0;
   box-shadow: 5px 5px 5px #adadad;
   position: fixed;
 }
 #formRemove {
   float: right;
   color: grey;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  padding: 20px;
+  color: #9d9d9d;
+  background-color: #222;
+  border-color: #080808;
+}
+footer p {
+  margin-left: 30px;
 }

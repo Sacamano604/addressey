@@ -73,7 +73,7 @@
         </table>
         <!-- <div id="addContactButtons"> -->
           <button type="submit" class="btn btn-success" ng-click="isAddingContact = !isAddingContact">Add Contact</button>
-          <button type="reset" class="btn btn-danger">Reset Form</button>
+          <button type="reset" class="btn btn-warning">Reset Form</button>
         <!-- </div> -->
       </form>
     </div>
@@ -81,7 +81,7 @@
       <!-- Div to show the details of the contact -->
       <div ng-show="isShowingDetails" id="contactDetailsDiv">
         <h3><strong>{{ contactDetails.firstName }} {{ contactDetails.lastName }}</strong></h3>
-        <p><strong>Email Address:</strong> {{ contactDetails.emailAddress }}</p>
+        <p><strong>Email Address:</strong> <a href="mailto:{{ contactDetails.emailAddress }}">{{ contactDetails.emailAddress }}</a></p>
         <p><strong>Phone Number:</strong> {{ contactDetails.phoneNumber }}</p>
         <p><strong>Address:</strong> {{ contactDetails.streetAddress }}, {{ contactDetails.city }}, {{ contactDetails.country }} {{ contactDetails.zipPostal }}</p>
       </div>
