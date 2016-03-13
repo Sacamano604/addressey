@@ -1,15 +1,18 @@
 <div class="row">
   <div id="contactsSidebar" class="col-xs-3 col-md-3">
-    <button id="contactButton" type="submit" class="btn btn-primary" ng-click="isAddingContact = !isAddingContact">Add a Contact</button>
+    <button id="contactButton" type="submit" class="btn btn-primary" ng-click="addingContact()">Add a Contact</button>
     <h4>Current Contacts</h4>
+    <input ng-model="contactFilter" type="text" class="form-control" placeholder="Filter contacts...">
     <ul id="contactsList">
-      <li ng-repeat="contact in contacts | orderBy:'lastName' ">{{ contact.firstName }} {{ contact.lastName }}</li>
+      <li ng-repeat="contact in contacts | orderBy:'lastName' | filter:contactFilter"><a href="" ng-click="viewContactDetails(contact.$id);">{{ contact.firstName }} {{ contact.lastName }}</a></li>
     </ul>
   </div>
   <div class="col-xs-12 col-md-8">
-    <div ng-show="isAddingContact">
+    <!-- Div to show the form to add a new contact -->
+    <div ng-show="isAddingContact" id="newContactForm">
+      <form class="form-inline" name="addContactForm" ng-submit="saveContact()">
+      <button type="reset" class="btn btn-default" ng-click="isAddingContact = !isAddingContact" id="formRemove"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
       <h2>Add a Contact</h2>
-      <form class="form-inline" ng-submit="saveContact()">
         <table id="addContactTable">
           <tr>
             <td>
@@ -68,11 +71,19 @@
             </td>
           </tr>
         </table>
-        <div id="addContactButtons">
-          <button type="submit" class="btn btn-success">Add Contact</button>
+        <!-- <div id="addContactButtons"> -->
+          <button type="submit" class="btn btn-success" ng-click="isAddingContact = !isAddingContact">Add Contact</button>
           <button type="reset" class="btn btn-danger">Reset Form</button>
-        </div>
+        <!-- </div> -->
       </form>
     </div>
+
+      <!-- Div to show the details of the contact -->
+      <div ng-show="isShowingDetails" id="contactDetailsDiv">
+        <h3><strong>{{ contactDetails.firstName }} {{ contactDetails.lastName }}</strong></h3>
+        <p><strong>Email Address:</strong> {{ contactDetails.emailAddress }}</p>
+        <p><strong>Phone Number:</strong> {{ contactDetails.phoneNumber }}</p>
+        <p><strong>Address:</strong> {{ contactDetails.streetAddress }}, {{ contactDetails.city }}, {{ contactDetails.country }} {{ contactDetails.zipPostal }}</p>
+      </div>
   </div>
 </div>

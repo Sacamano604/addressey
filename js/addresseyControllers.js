@@ -2,26 +2,31 @@
 
 // Addressey Controller Module
 var addresseyControllers = angular.module('addresseyControllers', []);
-
-
-
+// Controller that handles anything to do with the address book
 addresseyControllers.controller('bookController', ['$scope', '$rootScope', '$location', 'currentAuth', 'authService', 'contactService', function($scope, $rootScope, $location, currentAuth, authService, contactService) {
-  // Get current user's email address to display on the navbar
+  // Grab the current user's ID, and if it resolves then call the get contacts service to display all the user's contacts
   var userId = authService.getCurrentUser();
     if (userId) {
       $scope.contacts = contactService.getContacts(userId);
     }
-
+  // Save contact function to insert a new contact into the DB
   $scope.newContact = {firstName: '', lastName: '', emailAddress: '', phoneNumber: '', streetAddress: '', city: '', country: '', zipPostal: ''};
-
   $scope.saveContact = function() {
     $scope.newContact = {firstName: $scope.contact.firstName, lastName: $scope.contact.lastName, emailAddress: $scope.contact.emailAddress, phoneNumber: $scope.contact.phoneNumber, streetAddress: $scope.contact.streetAddress, city: $scope.contact.city, country: $scope.contact.country, zipPostal: $scope.contact.zipPostal};
     contactService.saveContact($scope.newContact, $rootScope.loggedInUser.uid);
   };
+  // View the contact's details
+  $scope.viewContactDetails = function(contactId) {
+    var user = authService.getCurrentUser();
+    $scope.contactDetails = contactService.getContactDetails(user, contactId);
+    $scope.isAddingContact = false;
+    $scope.isShowingDetails = true;
+  };
+  $scope.addingContact = function() {
+    $scope.isShowingDetails = false;
+    $scope.isAddingContact = true;
+  }
 }]);
-
-
-
 // AuthController - Used for registering/logging in/logging out
 addresseyControllers.controller('authController', ['$scope', '$location', 'authService', function($scope, $location, authService) {
   // Object bound to inputs on the register and login pages
@@ -38,11 +43,7 @@ addresseyControllers.controller('authController', ['$scope', '$location', 'authS
   $scope.logout = function() {
     authService.logout();
   }
-
 }]);
-
-
-
 // Controller that handles which nav link is active based on the current page loaded
 addresseyControllers.controller('navController', ["$scope", "$location", function($scope, $location) {
   $scope.isActive = function (viewLocation) {

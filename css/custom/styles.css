@@ -31,27 +31,39 @@ form {
 #contactButton {
   margin-top: 20px;
 }
+
+
+
 #contactsList {
   padding: 0;
   list-style-type: none;
 }
-#contactsList li, #contactsList a li  {
+#contactsList li, #contactsList li a  {
   color: #adadad;
   margin: 5px;
   padding: 10px;
   background-color: #eee;
   text-decoration: none;
 }
-#contactsList a li:hover {
+#contactsList li a:hover {
   color: black;
-  background-color: #adadad;
   text-decoration: none;
 }
 #contactsList a:hover {
   text-decoration: none;
 }
-#addContactTable {
-  /*width: 700px;*/
+
+
+
+
+
+#newContactForm {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 5px 5px 5px #adadad;
+  position: fixed;
 }
 #addContactTable td {
   padding: 5px;
@@ -61,4 +73,16 @@ form {
 #addContactButtons {
   padding-top: 20px;
   float: left;
+}
+#contactDetailsDiv {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 5px 5px 5px #adadad;
+  position: fixed;
+}
+#formRemove {
+  float: right;
+  color: grey;
 }
