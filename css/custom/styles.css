@@ -40,7 +40,7 @@ form {
   padding: 10px;
   border: 1px solid #eee;
   border-radius: 5px;
-  margin-top: 20px;
+  margin-top: 50px;
   box-shadow: 5px 5px 5px #adadad;
   padding-top: 0;
   position: fixed;
@@ -50,9 +50,9 @@ form {
   width: 175px;
   text-align: right;
 }
-#addContactButtons {
-  padding-top: 20px;
-  float: left;
+#addButton {
+  margin: 20px 5px 10px 10px;
+  float: right;
 }
 #contactDetailsDiv {
   min-width: 400px;
