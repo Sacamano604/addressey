@@ -15,7 +15,7 @@ Functionality:
 What's left to to:
   - Make the user's login email (displayed on top right) persist through a refresh
   - Code Clean up/file structure clean up
-  - Firebase security rules
+  - ~~Firebase security rules~~
   - Any CSS edits (very basic boostrap elements in place)
 
 Beyond the list of what is left to do, this actually functions pretty well and is quite speedy.
